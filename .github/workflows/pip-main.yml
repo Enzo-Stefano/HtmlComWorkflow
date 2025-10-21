@@ -24,6 +24,6 @@ jobs:
 
       - name: Atualiza site na Netlify
         env:
-          ENV_NETLIFY_AUTH_TOKEN: $｛｛ secrets.NETLIFY_AUTH_TOKEN ｝｝
-          ENV_NETLIFY_SITE_ID: $｛｛ secrets.NETLIFY_SITE_ID ｝｝     
-        run: netlify deploy --site=$ENV_NETLIFY_SITE_ID --auth=$ENV_NETLIFY_AUTH_TOKEN --dir="." --prod
+          NETLIFY_AUTH_TOKEN: $｛｛ secrets.NETLIFY_AUTH_TOKEN ｝｝
+          NETLIFY_SITE_ID: $｛｛ secrets.NETLIFY_SITE_ID ｝｝     
+        run: netlify deploy --site=$NETLIFY_SITE_ID --auth=$NETLIFY_AUTH_TOKEN --dir="." --prod
