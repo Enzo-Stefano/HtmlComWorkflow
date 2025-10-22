@@ -1,6 +1,7 @@
 name: Pipeline do Netlify
 
 on:
+  workflow_dispatch:  
   push:
     branches: [ main ]
 
@@ -12,7 +13,7 @@ jobs:
     steps:
       - name: Checkout do repositório
         uses: actions/checkout@v4
-
+        
       - name: Setup do Node.js para Netlify CLI
         uses: actions/setup-node@v4
         with:
@@ -24,5 +25,5 @@ jobs:
       - name: Atualiza site na Netlify
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}     
         run: netlify deploy --site=$NETLIFY_SITE_ID --auth=$NETLIFY_AUTH_TOKEN --dir="." --prod
